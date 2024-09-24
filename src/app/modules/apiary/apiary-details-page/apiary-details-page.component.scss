@@ -1,0 +1,13 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    #description {
+        resize: none;
+        height: 150px;
+    }
+}
+
+.border-top-1 {
+    border-top: 1px solid gray;
+}

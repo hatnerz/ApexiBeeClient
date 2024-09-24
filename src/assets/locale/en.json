@@ -1,0 +1,97 @@
+{
+    "users" : {
+        "admin" : "Admin",
+        "manager" : "Manager",
+        "client" : "Beekeeper",
+        "beekeeper" : "Beekeeper"
+    },
+
+    "profile" : {
+        "welcome" : "Welcome! You have authorized as"
+    },
+
+    "managers" : {
+        "managers" : "Managers",
+        "addManager" : "Add manager"
+    },
+
+    "general" : {
+        "logIn" : "Log in",
+        "logOut" : "Log out",
+        "signUp" : "Sign up",
+        "profile" : "Profile",
+        "backHome" : "Back to home page",
+        "about" : "About us",
+        "start" : "Start work",
+        "sortBy" : "Sort by",
+        "delete" : "Delete",
+        "modify" : "Modify",
+        "username" : "Username",
+        "firstName" : "First name",
+        "lastName" : "Last name"
+    },
+
+    "menu" : {
+        "menu" : "Menu",
+        "orders" : "Orders",
+        "apiaries" : "Apiaries",
+        "managers" : "Managers",
+        "database" : "Database"
+    },
+    
+    "database" : {
+        "databaseAdmin" : "Database administration",
+        "lastBackup" : "Last backup date",
+        "createBackup" : "Create backup",
+        "restoreDatabase" : "Restore database from the last backup"
+    },
+
+    "home" : {
+        "intro" : "Smart apiary for Smart beekeepers"
+    },
+
+    "auth" : {
+        "signUpInfo" : "You can sign up as a beekeeper",
+        "username" : "Username",
+        "password" : "Password",
+        "repeatPassword" : "Repeat password",
+        "email" : "Email",
+        "gotoSignIn" : "Already have an account?",
+        "gotoSignUp" : "Go to registration"
+    },
+
+    "settings" : {
+        "language" : "Language",
+        "dataFormat" : "Data format",
+        "timeFormat" : "Time format",
+        "timeZone" : "Time zone",
+        "applyChanges" : "Apply changes",
+        "settings" : "Settings"
+    },
+
+    "apiary" : {
+        "addApiary" : "Create apiary"
+    },
+
+    "footer" : {
+        "help" : "Help",
+        "about" : "About",
+        "credentials" : "Credentials",
+        "privacy" : "Privacy"
+    },
+
+    "hive" : {
+        "hive" : "Hive",
+        "hives" : "Hives"
+    },
+
+    "order" : {
+        "createOrder" : "Create order",
+        "clientOrders" : "Client orders",
+        "allOrders" : "All orders",
+        "order" : "Order",
+        "orderDate" : "Order date",
+        "status" : "Status",
+        "processOrder" : "Process order"
+    }
+}

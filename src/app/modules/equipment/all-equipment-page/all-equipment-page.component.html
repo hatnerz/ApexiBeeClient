@@ -1,0 +1,49 @@
+<div class="all-equipment">
+    <div class="container">
+        <div class="inner">
+            <h1>Equipment</h1>
+            <div>
+                <p-button icon="pi pi-plus" label="Register equipment" [style]="{marginBottom: '20px'}" (click)="openRegisterEquipment()"></p-button>
+
+                <div class="equipment-table" style="margin-bottom: 10px">
+                    <p-table [value]="equipments" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10]">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Id</th>
+                                <th pSortableColumn="equipmentName">Equipment type <p-sortIcon field="equipmentName"></p-sortIcon></th>
+                                <th>Serial data</th>
+                                <th></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-equipment>
+                            <tr>
+                                <td>{{ equipment.id }}</td>
+                                <td>{{ equipment.equipmentName }}</td>
+                                <td>{{ equipment.serialNumber }}</td>
+                                <td style="padding: 0px">
+                                    <p-button severity="danger" (click)="deleteEquipment(equipment)">{{ 'general.delete' | translate }}</p-button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog
+    header="Add equipment"
+    [(visible)]="isAddEquipmentDialogOpened"
+    [modal]="true"
+    [style]="{ minWidth: '250px', width: '20vw' }"
+    [draggable]="false"
+    [resizable]="false">
+    <p style="margin-bottom: 10px;">Choose equipment type</p>
+    <div style="margin-bottom: 10px;">
+        <p-dropdown [style]="{ minWidth: '180px'}" appendTo="body" [(ngModel)]="selectedEquipmentType" [options]="items"></p-dropdown>
+    </div>
+    <div>
+        <button pButton (click)="registerEquipment()">Add equipment</button>
+    </div>
+</p-dialog>

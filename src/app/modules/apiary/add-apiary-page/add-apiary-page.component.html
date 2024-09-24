@@ -1,0 +1,75 @@
+<div class="create-order">
+    <div class="container">
+        <div class="inner">
+            <h1>{{ 'apiary.addApiary' | translate }}</h1>
+            <div class="create-order-body">
+                <h3 style="margin-bottom: 15px;">Information about apiary</h3>
+            
+                <form (ngSubmit)="addApiary()" [formGroup]="addApiaryForm">
+                    <p-panel header="General information">
+                        <div formGroupName="apiaryData">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input id="name" pInputText formControlName="name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea id="description" pInputTextarea formControlName="description"></textarea>
+                            </div>
+                        </div>
+                    </p-panel>
+                    
+                    <p-panel header="Hub station" [style]="{marginTop: '20px'}">
+                        <div style="display: flex; gap: 15px" formGroupName="hubData">
+                            <div class="form-group">
+                                <label for="latitude">Latitude</label>
+                                <input [style]="{ width: '200px' }" id="latitude" pInputText formControlName="latitude" type="number" />
+                            </div>
+                            <div class="form-group">
+                                <label for="longitude">Longitude</label>
+                                <input [style]="{ width: '200px' }" id="longitude" pInputText formControlName="longitude" type="number" />
+                            </div>
+                            <div class="form-group">
+                                <label for="longitude">Serial number</label>
+                                <input placeholder="EQ:20240101:12345abc" [style]="{ width: '300px' }" id="serialNumber" pInputText formControlName="serialNumber" type="text" />
+                            </div>             
+                        </div>
+                    </p-panel>
+
+                    <p-panel header="Sensor parameters" [style]="{marginTop: '20px'}">
+                        <div style="margin-bottom: 15px;">
+                            <p-checkbox (onChange)="onCheckboxChange($event)" [binary]="true" formControlName="isStandartValueUsed"></p-checkbox> <span style="margin-left: 5px;">Use standart (recomended) critical values</span>
+                        </div>
+                        <div formGroupName="hubData">
+                            <h4 style="margin-bottom: 5px">Critical temperature (°С)</h4>
+                            <div style="display: flex; gap: 15px" >
+                                <div class="form-group">
+                                    <label for="criticalTemperatureLow">Minimum</label>
+                                    <input min="-50" max="70" [style]="{ width: '200px' }" id="criticalTemperatureLow" pInputText formControlName="criticalTemperatureLow" type="number" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="criticalTemperatureHigh">Maximum</label>
+                                    <input min="-50" max="70" [style]="{ width: '200px' }" id="criticalTemperatureHigh" pInputText formControlName="criticalTemperatureHigh" type="number"/>
+                                </div>    
+                            </div>  
+
+                            <h4 style="margin-bottom: 5px; margin-top: 25px;">Critical humidity (%)</h4>
+                            <div style="display: flex; gap: 15px" >
+                                <div class="form-group">
+                                    <label for="criticalHumidityLow">Minimum</label>
+                                    <input min="0" max="100" [style]="{ width: '200px' }" id="criticalHumidityLow" pInputText formControlName="criticalHumidityLow" type="number" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="criticalHumidityHigh">Maximum</label>
+                                    <input min="0" max="100" [style]="{ width: '200px' }" id="criticalHumidityHigh" pInputText formControlName="criticalHumidityHigh" type="number" />
+                                </div>    
+                            </div>  
+                        </div>
+                    </p-panel>
+                    
+                    <button style="margin-top: 20px; margin-bottom: 20px" pButton type="submit" label="Submit"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

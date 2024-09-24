@@ -1,0 +1,128 @@
+<div class="managers">
+    <div class="container">
+        <div class="inner">
+            <h1>{{ 'managers.managers' | translate }}</h1>
+            <div>
+                <p-button icon="pi pi-plus" [style]="{marginBottom: '20px'}" (click)="openAddManager()"></p-button>
+
+                <div class="managers-table">
+                    <p-table [value]="managers" [tableStyle]="{ 'min-width': '50rem' }">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>First name</th>
+                                <th>Last name</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-manager>
+                            <tr>
+                                <td>{{ manager.userName }}</td>
+                                <td>{{ manager.email }}</td>
+                                <td>{{ manager.firstName }}</td>
+                                <td style="padding-right: 0px">{{ manager.lastName }}</td>
+                                <td style="padding: 10px" class="flex flex-justify-content-end flex-align-items-center">
+                                    <p-button severity="warning" (click)="startModifyManager(manager)">{{ 'general.modify' | translate }}</p-button>  
+                                </td>
+                                <td style="padding: 0px">
+                                    <p-button severity="danger" (click)="deleteManager(manager.id)">{{ 'general.delete' | translate }}</p-button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog
+    header="Add manager"
+    [(visible)]="isManagerAddOverlayOpened"
+    [modal]="true"
+    [style]="{ width: '30vw' }"
+    [draggable]="false"
+    [resizable]="false">
+    <ng-container *ngTemplateOutlet="contentDialog"></ng-container>
+</p-dialog>
+
+<p-dialog
+    header="Modify manager info"
+    [(visible)]="isManagerModifyOverlayOpened"
+    [modal]="true"
+    [style]="{ width: '30vw' }"
+    [draggable]="false"
+    [resizable]="false">
+    <ng-container *ngTemplateOutlet="contentDialogModify"></ng-container>
+</p-dialog>
+
+<ng-template #contentDialog>
+    <form [formGroup]="addManagerForm" 
+    (ngSubmit)="addManager()">
+        <div style="display: flex; flex-direction: column">
+            
+            <label>Email</label>
+            <input
+                type="text"
+                formControlName="email"
+                pInputText
+                placeholder="email"/>
+
+            <label style="margin-top: 20px">Username</label>
+            <input
+                type="text"
+                formControlName="username"
+                pInputText
+                placeholder="username"/>
+            
+            <label style="margin-top: 20px">Password</label>
+            <input
+                type="password"
+                pInputText
+                formControlName="password"
+                placeholder="password"/>
+
+            <button pButton style="margin-top: 20px" type="submit">Add manager</button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #contentDialogModify>
+    <form [formGroup]="modifyManagerForm" (ngSubmit)="updateManager()">
+        <div style="display: flex; flex-direction: column">
+
+            <label>Username</label>
+            <input
+                type="text"
+                formControlName="username"
+                pInputText
+                placeholder="username"/>
+
+            <label style="margin-top: 20px">Email</label>
+            <input
+                type="text"
+                formControlName="email"
+                pInputText
+                placeholder="email"/>
+            
+            <label style="margin-top: 20px">First name</label>
+            <input
+                type="text"
+                formControlName="firstName"
+                pInputText
+                placeholder="first name"/>
+            
+            <label style="margin-top: 20px">Last name</label>
+            <input
+                type="text"
+                pInputText
+                formControlName="lastName"
+                placeholder="last name"/>
+
+            <button pButton style="margin-top: 20px" type="submit">Change manager data</button>
+
+        </div>
+    </form>
+</ng-template>

@@ -1,0 +1,20 @@
+<div class="database">
+    <div class="container">
+        <div class="inner">
+            <h1>{{ 'database.databaseAdmin' | translate }}</h1>
+            <div class="actions" *ngIf="!isLoading">
+                <div>{{ 'database.lastBackup' | translate }} {{ getCorrectDate(lastBackupDate) | date : dateFormat }}</div>
+                <div class="flex" style="gap: 20px; margin-top: 20px;">
+                    <p-button (click)="createBackup()">{{ 'database.createBackup' | translate }}</p-button>
+                    <p-button (click)="restoreDatabase()">{{ 'database.restoreDatabase' | translate }}</p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+        <p-progressSpinner ariaLabel="loading" />
+    </div>
+</ng-template>

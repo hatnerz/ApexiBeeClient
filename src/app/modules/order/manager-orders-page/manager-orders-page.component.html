@@ -1,0 +1,73 @@
+<ng-template #loadingTemplate>
+    <div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+        <p-progressSpinner ariaLabel="loading" />
+    </div>
+</ng-template>
+
+<div class="client-orders">
+    <div class="container">
+        <div *ngIf="!loading; else loadingTemplate" class="inner">
+            <h1 style="margin-bottom: 15px;">{{ 'order.allOrders' | translate }}</h1>
+            <div style="margin-bottom: 20px;">
+                <p-button icon="pi pi-plus" label="{{ 'order.createOrder' | translate }}" (click)="initCreateOrderDialog()"></p-button>
+            </div>
+            <app-order-list (modifyOrderButtonClick)="initModifyOrderDialog($event)" [isCanBeModified]="true" [orders]="orders"></app-order-list>
+        </div>
+    </div>
+</div>
+
+<p-dialog
+    header="Order information"
+    [(visible)]="isOrderModifyDialogOpened"
+    [modal]="true"
+    [style]="{ width: '30vw' }"
+    [draggable]="false"
+    [resizable]="false">
+    <ng-container *ngTemplateOutlet="contentDialog"></ng-container>
+</p-dialog>
+
+<ng-template #contentDialog>
+    <div style="display: flex; flex-direction: column">
+        <p style="margin-bottom: 20px">Order № {{ currentModifyingOrder?.id }}</p>
+        <p style="margin-bottom: 20px">Customer: {{ currentModifyingOrder.beekeeper?.firstName + " " + currentModifyingOrder.beekeeper?.lastName }}</p>
+        <p style="margin-bottom: 20px">Status: {{ currentModifyingOrder.status?.statusName }}</p>
+        <p>Description:</p>
+        <textarea pInputTextarea [(ngModel)]="currentModifyingOrder!.description" style="margin-top: 20px; resize: none; height: 100px;"></textarea>
+ 
+        <button pButton style="margin-top: 20px" (click)="modifyOrder()">Change description</button>
+
+        <div *ngIf="currentModifyingOrder.status?.statusName!='completed'" style="display: flex; margin-top: 20px; gap: 5px; justify-content: space-between;">
+            <button (click)="completeOrder(currentModifyingOrder.id)" style="flex: 1" pButton class="p-button-success" *ngIf="currentModifyingOrder.status?.statusName=='approved'">Complete order</button>
+            <button (click)="approveOrder(currentModifyingOrder.id)" style="flex: 1" pButton class="p-button-warning" *ngIf="currentModifyingOrder.status?.statusName=='new'">Approve order</button>
+            <button (click)="cancelOrder(currentModifyingOrder.id)" style="flex: 1" pButton class="p-button-danger">Cancel order</button>
+        </div>
+    </div>
+</ng-template>
+
+<p-dialog
+    header="Create new order"
+    [(visible)]="isOrderAddDialogOpened"
+    [modal]="true"
+    [style]="{ width: '50vh'}"
+    [draggable]="false"
+    [resizable]="false">
+<ng-container *ngTemplateOutlet="contentDialogAddOrder"></ng-container>
+</p-dialog>
+
+
+<ng-template #contentDialogAddOrder>
+    <div style="display: flex; flex-direction: column">
+        <p>Client</p>
+        <p-dropdown [(ngModel)]="orderToCreateBeekeeper" placeholder="Select beekeeper" [options]="clientsList">
+            <ng-template let-client pTemplate="item">
+                {{ client?.firstName }} {{ client?.lastName }} ({{ client?.userName }})
+              </ng-template>
+              <ng-template let-client pTemplate="selectedItem">
+                {{ client?.firstName }} {{ client?.lastName }}
+              </ng-template>
+        </p-dropdown>
+        <label style="margin-top: 20px;" for="addOrderDescription">Description</label>
+        <textarea id="addOrderDescription" pInputTextarea [(ngModel)]="orderToCreate.description" style="resize: none; height: 100px;"></textarea>
+        <button pButton style="margin-top: 20px" (click)="createNewOrder()">Create order</button>
+    </div>
+</ng-template>

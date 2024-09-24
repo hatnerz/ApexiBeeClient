@@ -1,0 +1,39 @@
+.apiary-container {
+
+    .apiary {
+        display: flex;
+        background-color: white;
+        box-shadow: 0px 0px 4px 1px rgb(172, 172, 172);
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 7px;
+        min-height: 150px;
+
+        .apiary__inner {
+            display: flex;
+            gap: 25px;
+            flex-grow: 1;
+
+            .apiary__index {
+                display: flex;
+                align-items: center;
+                font-size: 35px;
+                font-weight: 700;
+                color: gray;
+                padding-right: 25px;
+                border-right: 2px rgb(202, 202, 202) solid;
+            }
+            
+            .apiary__body {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
+
+                .details-button {
+                    align-self: flex-end;
+                }
+            }
+        }
+    }
+}

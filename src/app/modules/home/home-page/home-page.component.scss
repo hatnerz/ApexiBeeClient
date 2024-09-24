@@ -1,0 +1,18 @@
+.home-page {
+
+    .intro {
+        height: 100vh;
+        background: url('../../../../assets/media/main-bg.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .inner {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            font-size: 70px;
+            color: white;
+            max-width: 800px;
+        }
+    }
+}

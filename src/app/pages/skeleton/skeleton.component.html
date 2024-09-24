@@ -1,0 +1,72 @@
+<div class="app-inner">
+    <header class="header" *ngIf="uiPartsService.headerType != HeaderType.None">
+        <div class="container">
+            <div class="header__inner">
+                <div class="logo flex flex-align-items-center" [routerLink]="['/home']" style="gap: 10px;">
+                    <img src="../../../assets/media/logo.png" style="max-height: 40px;">
+                    <div class="header__text">
+                        <span style="color: white">Apexi</span><span style="color: #ffc014">Bee</span>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <div>
+                        <p-button [style]="{color: 'white'}" [text]="true">{{ 'general.about' | translate }}</p-button>
+                    </div>
+
+                    <div>
+                        <p-button [style]="{color: 'white'}" [routerLink]="['/home','start']" [text]="true">{{ 'general.start' | translate }}</p-button>
+                    </div>
+
+                    <div *ngIf="!authService.isAuthenticated()" style="display: flex; gap: 10px;">
+                        <p-button [routerLink]="['/sign', 'in']" [rounded]="true">{{ 'general.logIn' | translate }}</p-button>
+                        <p-button [routerLink]="['/sign', 'up']" [rounded]="true" [outlined]="true" [style]="{color: 'white'}">{{ 'general.signUp' | translate }}</p-button>
+                    </div>
+    
+                    <div *ngIf="authService.isAuthenticated()" style="display: flex; gap: 10px; align-items: center;">
+                        <div>
+                            <button pButton [routerLink]="['/profile']" style="border-radius: 50px;"> 
+                                <i class="pi pi-user" style="font-size: 1.5rem"></i>
+                                <span style="margin-left: 5px;">{{ 'general.profile' | translate }}</span>
+                            </button>
+                        </div>
+                        <div>
+                            <p-button [routerLink]="['/settings']" [outlined]="true" icon="pi pi-wrench"></p-button>
+                        </div>
+
+                    </div>
+                    
+                    <div *ngIf="!authService.isAuthenticated()" class="language-select">
+                        <p-dropdown [style]="{width: '140px'}" (onChange)="updateCurrentLanguage()" [options]="localizationService.languages" [(ngModel)] = "selectedLanguage"></p-dropdown>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="aside" *ngIf="uiPartsService.sideMenuType!=SideMenuType.None" >
+            <h3 class="aside__menu">{{ "menu.menu" | translate }}</h3>
+            <p-menu [style]="{border: 'none'}" [model]="getCurrentMenuItems()"></p-menu>
+        </div>
+        <div class="main-content"> 
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div>
+                    <a class="footer__link">{{ 'footer.help' | translate }}</a>
+                    <a class="footer__link">{{ 'footer.about' | translate }}</a>
+                    <a class="footer__link">{{ 'footer.credentials' | translate }}</a>
+                    <a class="footer__link">{{ 'footer.privacy' | translate }}</a>
+                </div>
+                <div>
+                    ApexiBee 2024
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<p-toast></p-toast>
+<p-confirmDialog/>

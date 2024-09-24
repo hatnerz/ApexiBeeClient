@@ -1,0 +1,24 @@
+<div class="sign-in">
+    <div class="container">
+        <div class="logo">
+            <img class="picture" src="../../../../../assets/media/logo.png">
+            <div class="text">ApexiBee</div>
+        </div>
+        <div class="back-home">
+            <p-button [routerLink]="['/home']" [outlined]="true">{{ 'general.backHome' | translate }} </p-button>
+        </div>
+        <div class="form">
+            <form [formGroup]="signInForm" (ngSubmit)="logIn()">
+                <div class="title">{{ 'general.logIn' | translate }} </div>
+                <div class="form-inputs">
+                    <input formControlName="login" pInputText [placeholder]="'auth.username' | translate">
+                    <input formControlName="password" pInputText type="password" [placeholder]="'auth.password' | translate">
+                    <div class="flex flex-justify-content-space-between">
+                        <p-button type="submit">{{ 'general.logIn' | translate }}</p-button>
+                        <p-button [routerLink]="['/sign','up']" [link]="true">{{ 'auth.gotoSignUp' | translate }}</p-button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

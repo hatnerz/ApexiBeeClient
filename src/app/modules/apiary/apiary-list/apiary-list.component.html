@@ -1,0 +1,21 @@
+<div class="apiary-container">
+    <div class="apiary" *ngFor="let apiary of apiaries; let i = index">
+        <div class="apiary__inner">
+            <div class="apiary__index">
+                {{ i }}
+            </div>
+            <div class="apiary__body">
+                <div class="head">
+                    <h3 style="padding-bottom: 10px;">Apiary - {{ apiary.name }}</h3>
+                    <div>
+                        <p style="padding-top: 10px;">{{ apiary.description }} </p>
+                    </div>
+                </div>
+                <div class="details-button">
+                    <p-button [rounded]="true" (click)="goApiaryDetails(apiary)">Details</p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

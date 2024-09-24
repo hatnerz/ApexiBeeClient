@@ -1,0 +1,31 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    margin: auto;
+}
+  
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        margin-bottom: 5px;
+    }
+    
+    input,
+    textarea {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    textarea {
+        resize: none;
+        height: 100px;
+    }
+
+    input[type="number"] {
+        width: 100px;
+    }
+}

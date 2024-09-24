@@ -1,0 +1,11 @@
+<div class="client-apiaries">
+    <div class="container">
+        <div class="inner">
+            <h1>🍯 Apiaries</h1>
+            <div>
+                <p-button [routerLink]="['/apiary', 'add']" icon="pi pi-plus" label="Add apiary" [style]="{marginBottom: '20px'}"></p-button>
+                <app-apiary-list [apiaries]="currentUserApiaries"></app-apiary-list>
+            </div>
+        </div>
+    </div>
+</div>

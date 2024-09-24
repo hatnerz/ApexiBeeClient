@@ -1,0 +1,50 @@
+<div class="apiary-details">
+    <div class="container">
+        <div class="inner">
+            <h1>Hive - {{ currentHive.name }} </h1>
+            <div class="general-info">
+                <p>{{ currentHive.description }}</p>
+                <div *ngIf="currentHive.isActive" style="margin-top: 20px" class="hive-activation">
+                    <p style="color: rgb(87, 190, 55); font-size: 20px; font-weight: 600;"> Active</p>
+                </div>
+                <div *ngIf="!currentHive.isActive" style="margin-top: 20px" class="hive-activation">
+                    <p style="color: rgb(155, 30, 30); font-size: 20px; font-weight: 600;">Inactive</p>
+                    <button (click)="activateHive()" pButton label="Activate" class="p-button-success"></button>
+                </div>
+            </div>
+            <div style="margin-top: 30px;" class="sensors">
+                <h2>Sensors</h2>
+                <div  class="hive-sensors-container" style="display: flex; gap: 25px; flex-wrap: wrap;">
+                    <div *ngFor="let sensor of hiveSensors; let i = index" class="hive-sensor-view">
+                        <div class="hive-sensor-view__inner">
+                            <h3>{{ sensor.sensorType?.name }} ( {{sensor.id}} )</h3>
+                            <p>Last reading: {{ 
+                            getSensorLastReading(sensor.id) ?
+                            (this.localizationService.getCorrectLocalizedDate(getReadingDate(getSensorLastReading(sensor.id))) | date : dateFormat) :
+                            "No actual readings"
+                            }}</p>
+                            <p *ngIf="getSensorLastReading(sensor.id)" style="font-size: 18px; margin-top: 7px">Current value: {{ getCorrectSensorValue(getSensorLastReading(sensor.id)!.value, sensor.sensorType!.name) }} {{ getCorrectActualLocalizedUnits(sensor) }}</p>
+                        
+                            <div class="sensor-visualizing" style="max-height: 400px;">
+                                <p>Last 24 hours chart: </p>
+                                <p-chart #chart{{i+1}} type="line" [data]="data[i]" [options]="options">
+                                </p-chart>
+                            </div>
+                            <div *ngIf="sensor.sensorType?.name == 'temperature'" style="display: flex; margin-left: 25px; margin-top: 15px; gap: 10px">
+                                <p-radioButton value="°F" (ngModelChange)="onUnitChanged()" [(ngModel)]="temperatureUnits" inputId="tempF"/><label for="tempF">°F</label>
+                                <p-radioButton value="°C" (ngModelChange)="onUnitChanged()"  [(ngModel)]="temperatureUnits" inputId="tempC"/><label for="tempC">°C</label>
+                            </div>
+                            <div *ngIf="sensor.sensorType?.name == 'weight'" style="display: flex; margin-left: 25px; margin-top: 15px; gap: 10px">
+                                <p-radioButton value="kg" (ngModelChange)="onUnitChanged()" [(ngModel)]="weightUnits" inputId="weightKg"/><label for="tempF">kg (kilograms) </label>
+                                <p-radioButton value="lb" (ngModelChange)="onUnitChanged()" [(ngModel)]="weightUnits" inputId="weightPound"/><label for="tempC">lb (pounds) </label>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div style="display: flex; justify-content: end; margin-top: 20px; margin-bottom: 20px; ">
+                <button pButton class="p-button-danger" label="Delete hive" (click)="onDeleteButtonClicked()"></button>
+            </div>
+        </div>
+    </div>
+</div>

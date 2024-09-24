@@ -1,0 +1,25 @@
+<div *ngFor="let order of orders" class="order">
+    <div class="header flex flex-justify-content-space-between flex-align-items-center">
+        <h4 class="title">{{ 'order.order' | translate }} № {{ order.id }} </h4>
+        <div class="flex flex-direction-column flex-align-items-end">
+            <p style="color: gray">{{ 'order.orderDate' | translate }}: {{ getCorrectOrderDate(order) | date : orderDateFormat }}</p>
+        </div>
+    </div>    
+    <div class="body">
+        <div>{{ 'users.manager' | translate }} {{ (order.manager?.firstName ? order.manager?.firstName : "") + " " + (order.manager?.lastName ? order.manager?.lastName : "" ) }}</div>
+        <div class="flex flex-justify-content-space-between flex-align-items-center" style="margin-top: 10px; font-size: 18px">
+            <div style="margin-top: 10px; font-style: italic;">{{ order.description }} </div>
+            <div>{{ 'order.status' | translate }}: {{ order.status?.statusName }}</div>
+        </div>
+    </div>
+    <div style="margin-top: 15px;" *ngIf="isCanBeModified" class="actions flex flex-justify-content-end">
+        <p-button (click)="sendOrderModifying(order)" [rounded]="true" >{{ 'order.processOrder' | translate }}</p-button>
+    </div>
+</div>
+
+<!--
+    <p-button severity="info" *ngIf="isCanBeOrdered" [rounded]="true">{{ 'centers.createOrder' | translate }}</p-button>
+        <p-button severity="warning" *ngIf="IsCanBeModified" [rounded]="true">{{ 'centers.modifyAdress' | translate }}</p-button>
+        <p-button severity="danger" *ngIf="IsCanBeDeleted" [rounded]="true">{{ 'general.delete' | translate }}</p-button>
+    
+-->

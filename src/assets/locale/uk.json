@@ -1,0 +1,97 @@
+{
+    "users" : {
+        "admin" : "Адміністратор",
+        "manager" : "Менеджер",
+        "client" : "Бджоляр",
+        "beekeeper" : "Бджоляр"
+    },
+    
+    "profile" : {
+        "welcome" : "Вітаємо! Ви увійшли як"
+    },
+
+    "managers" : {
+        "managers" : "Менеджери",
+        "addManager" : "Додати менеджера"
+    },
+
+    "general" : {
+        "logIn" : "Авторизація",
+        "logOut" : "Вийти з аккаунту",
+        "signUp" : "Реєстрація",
+        "profile" : "Профіль",
+        "backHome" : "Повернутися на головну сторінку",
+        "about" : "Про нас",
+        "start" : "Почати роботу",
+        "sortBy" : "Сортування",
+        "delete" : "Видалити",
+        "modify" : "Змінити дані",
+        "username" : "Користувач",
+        "firstName" : "Ім'я",
+        "lastName" : "Прізвище"
+    },
+
+    "menu" : {
+        "menu" : "Меню",
+        "orders" : "Замовлення",
+        "apiaries" : "Пасіки",
+        "managers" : "Менеджери",
+        "database" : "База даних"
+    },
+
+    "database" : {
+        "databaseAdmin" : "Адміністрування бази даних",
+        "lastBackup" : "Дата останнього бекапу",
+        "createBackup" : "Створити резервну копію",
+        "restoreDatabase" : "Відновити базу даних"
+    },
+
+    "home" : {
+        "intro" : "Розумна пасіка для Розумних бджолярів"
+    },
+
+    "auth" : {
+        "signUpInfo" : "Ви можете зареєструватися як бджоляр",
+        "username" : "Ім'я користувача",
+        "password" : "Пароль",
+        "repeatPassword" : "Повторіть пароль",
+        "email" : "Електронна пошта",
+        "gotoSignIn" : "Вже маєте аккаунт?",
+        "gotoSignUp" : "Перейти до реєстрації"
+    },
+
+    "settings" : {
+        "language" : "Мова",
+        "dataFormat" : "Формат дати",
+        "timeFormat" : "Формат часу",
+        "timeZone" : "Часовий пояс",
+        "applyChanges" : "Прийняти зміни",
+        "settings" : "Налаштування"
+    },
+    
+    "apiary" : {
+        "addApiary" : "Створити пасіку"
+    },
+
+    "footer" : {
+        "help" : "Допомога",
+        "about" : "Про нас",
+        "credentials" : "Контакти",
+        "privacy" : "Конфіденційність"
+    },
+
+    "hive" : {
+        "hive" : "Вулик",
+        "hives" : "Вулики"
+    },
+
+    "order" : {
+        "clientOrders" : "Замовлення клієнта",
+        "allOrders" : "Усі замовлення",
+        "createOrder" : "Створити замовлення",
+        "order" : "Замовлення",
+        "orderDate" : "Дата замовлення",
+        "status" : "Статус",
+        "processOrder" : "Обробити замовлення"
+    }
+}

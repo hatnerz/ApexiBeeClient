@@ -1,0 +1,24 @@
+<div class="settings">
+    <div class="container">
+        <div class="inner">
+            <h1>{{ 'settings.settings' | translate }}</h1>
+            <div class="actions">
+                <h4 style="margin-bottom: 5px">{{ 'settings.language' | translate }}</h4>
+                <p-dropdown [(ngModel)]="languageSetting" [style]="{width: '250px'}" [options] = "localizationService.languages"></p-dropdown>
+                
+                <h4 style="margin-bottom: 5px; margin-top: 20px">{{ 'settings.dataFormat' | translate }}</h4>
+                <p-dropdown [(ngModel)]="dataFormatSetting" [style]="{width: '250px'}" optionLabel="fullLang" [options] = "localizationService.formats" place></p-dropdown>
+                
+                <h4 style="margin-bottom: 5px; margin-top: 20px">{{ 'settings.timeFormat' | translate }}</h4>
+                <p-dropdown [(ngModel)]="timeFormat" [style]="{width: '250px'}" optionLabel="label" [options] = "localizationService.timeFormats" place></p-dropdown>
+                
+                <h4 style="margin-bottom: 5px; margin-top: 20px">{{ 'settings.timeZone' | translate }}</h4>
+                <p-dropdown [(ngModel)]="timeZone" [style]="{width: '250px'}" [options] = "localizationService.timeZones"></p-dropdown>
+                
+                <div style="padding-top: 30px;">
+                    <p-button (click)="applyChanges()">{{ 'settings.applyChanges' | translate }}</p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

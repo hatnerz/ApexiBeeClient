@@ -1,0 +1,48 @@
+.sign-in {
+    height: 95vh;
+    display: flex;
+    align-items: center;
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        .picture {
+            max-width: 100px;
+        }
+
+        .text {
+            font-size: 30px;
+        }
+    }
+
+    .back-home {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+    }
+
+    .form {
+        width: 400px;
+        margin-top: 40px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+
+        .title {
+            font-size: 40px;
+            font-weight: 600;
+        }
+
+        .form-inputs {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+    }
+}
+
